@@ -90,7 +90,7 @@ public class Barrel implements InventoryHolder {
 	public static void onUpdate() {
 		for (Barrel barrel : barrels) {
 			// Minecraft day is 20 min, so add 1/20 to the time every minute
-			barrel.time += (1.0 / 20.0);
+			barrel.time += (1.0 / 5.0);
 		}
 		int numBarrels = barrels.size();
 		if (check == 0 && numBarrels > 0) {

@@ -142,24 +142,25 @@ public class BarrelBody {
 	 * woodtype of the block the spigot is attached to
 	 */
 	public byte getWood() {
-		Block wood;
+		Block block;
 		switch (getDirection(spigot)) { // 1=x+ 2=x- 3=z+ 4=z-
 			case 0:
 				return 0;
 			case 1:
-				wood = spigot.getRelative(1, 0, 0);
+				block = spigot.getRelative(1, 0, 0);
 				break;
 			case 2:
-				wood = spigot.getRelative(-1, 0, 0);
+				block = spigot.getRelative(-1, 0, 0);
 				break;
 			case 3:
-				wood = spigot.getRelative(0, 0, 1);
+				block = spigot.getRelative(0, 0, 1);
 				break;
 			default:
-				wood = spigot.getRelative(0, 0, -1);
+				block = spigot.getRelative(0, 0, -1);
 		}
 		try {
-			return LegacyUtil.getWoodType(wood);
+
+			return LegacyUtil.getWoodType(block);
 		} catch (NoSuchFieldError | NoClassDefFoundError noSuchFieldError) {
 			// Using older minecraft versions some fields and classes do not exist
 			return 0;

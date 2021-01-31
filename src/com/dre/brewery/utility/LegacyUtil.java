@@ -48,6 +48,7 @@ public class LegacyUtil {
 				planks.add(m);
 			}
 		}
+		planks.add(get("QUARTZ_BLOCK"));
 		PLANKS = planks;
 
 		Set<Material> woodStairs = EnumSet.noneOf(Material.class);
@@ -60,6 +61,7 @@ public class LegacyUtil {
 			get("DARK_OAK_STAIRS"),
 			get("CRIMSON_STAIRS"),
 			get("WARPED_STAIRS"),
+			get("QUARTZ_STAIRS"),
 		};
 		for (Material stair : gotStairs) {
 			if (stair != null) {
@@ -169,6 +171,7 @@ public class LegacyUtil {
 
 		if (P.use1_13 || isWoodStairs(wood.getType())) {
 			String material = wood.getType().name();
+			P.p.errorLog(material);
 			if (material.startsWith("OAK")) {
 				return 2;
 			} else if (material.startsWith("SPRUCE")) {
@@ -185,6 +188,8 @@ public class LegacyUtil {
 				return 7;
 			} else if (material.startsWith("WARPED")) {
 				return 8;
+			} else if (material.startsWith("QUARTZ")) {
+				return 9;
 			} else {
 				return 0;
 			}
