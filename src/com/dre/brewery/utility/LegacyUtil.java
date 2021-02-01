@@ -49,6 +49,7 @@ public class LegacyUtil {
 			}
 		}
 		planks.add(get("QUARTZ_BLOCK"));
+		planks.add(get("IRON_BLOCK"));
 		PLANKS = planks;
 
 		Set<Material> woodStairs = EnumSet.noneOf(Material.class);
@@ -62,6 +63,7 @@ public class LegacyUtil {
 			get("CRIMSON_STAIRS"),
 			get("WARPED_STAIRS"),
 			get("QUARTZ_STAIRS"),
+			get("IRON_BLOCK")
 		};
 		for (Material stair : gotStairs) {
 			if (stair != null) {
@@ -190,6 +192,8 @@ public class LegacyUtil {
 				return 8;
 			} else if (material.startsWith("QUARTZ")) {
 				return 9;
+			} else if (material.startsWith("IRON")) {
+				return 10;
 			} else {
 				return 0;
 			}
