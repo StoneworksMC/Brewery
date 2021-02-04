@@ -42,17 +42,16 @@ public class LegacyUtil {
 		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException ignored) {
 		}
 
-		Set<Material> planks = EnumSet.noneOf(Material.class);
+		Set<Material> planks = EnumSet.noneOf(Material.class); //Adds blocks to "planks". "Planks" defines what the barrel is made of
 		for (Material m : Material.values()) {
 			if (m.name().endsWith("PLANKS")) {
 				planks.add(m);
 			}
 		}
-		planks.add(get("QUARTZ_BLOCK"));
-		planks.add(get("IRON_BLOCK"));
+		planks.add(get("BLOCKUS_IRON_PLATING"));
 		PLANKS = planks;
 
-		Set<Material> woodStairs = EnumSet.noneOf(Material.class);
+		Set<Material> woodStairs = EnumSet.noneOf(Material.class); //Adds stairs to woodStairs. "Stairs" can define what the barrel is made of
 		Material[] gotStairs = {
 			get("OAK_STAIRS", "WOOD_STAIRS"),
 			get("SPRUCE_STAIRS", "SPRUCE_WOOD_STAIRS"),
@@ -62,8 +61,7 @@ public class LegacyUtil {
 			get("DARK_OAK_STAIRS"),
 			get("CRIMSON_STAIRS"),
 			get("WARPED_STAIRS"),
-			get("QUARTZ_STAIRS"),
-			get("IRON_BLOCK")
+			get("BLOCKUS_IRON_PLATING_STAIRS"),
 		};
 		for (Material stair : gotStairs) {
 			if (stair != null) {
@@ -73,7 +71,7 @@ public class LegacyUtil {
 		WOOD_STAIRS = woodStairs;
 
 
-		Set<Material> fences = EnumSet.noneOf(Material.class);
+		Set<Material> fences = EnumSet.noneOf(Material.class); //Same as above but for fence posts.
 		for (Material m : Material.values()) {
 			if (m.name().endsWith("FENCE")) {
 				fences.add(m);
@@ -173,7 +171,8 @@ public class LegacyUtil {
 
 		if (P.use1_13 || isWoodStairs(wood.getType())) {
 			String material = wood.getType().name();
-			P.p.errorLog(material);
+			//Uncomment line below to see barrel types in console when they are made. Helps with Debugging barrels that arent working
+			//P.p.errorLog(material); 
 			if (material.startsWith("OAK")) {
 				return 2;
 			} else if (material.startsWith("SPRUCE")) {
@@ -190,10 +189,8 @@ public class LegacyUtil {
 				return 7;
 			} else if (material.startsWith("WARPED")) {
 				return 8;
-			} else if (material.startsWith("QUARTZ")) {
+			} else if (material.startsWith("BLOCKUS_IRON_PLATING")) {
 				return 9;
-			} else if (material.startsWith("IRON")) {
-				return 10;
 			} else {
 				return 0;
 			}
