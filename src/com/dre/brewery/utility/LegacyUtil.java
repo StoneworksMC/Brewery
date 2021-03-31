@@ -48,7 +48,7 @@ public class LegacyUtil {
 				planks.add(m);
 			}
 		}
-		planks.add(get("BLOCKUS_IRON_PLATING"));
+		planks.add(get("QUARTZ_BLOCK"));
 		PLANKS = planks;
 
 		Set<Material> woodStairs = EnumSet.noneOf(Material.class); //Adds stairs to woodStairs. "Stairs" can define what the barrel is made of
@@ -61,7 +61,7 @@ public class LegacyUtil {
 			get("DARK_OAK_STAIRS"),
 			get("CRIMSON_STAIRS"),
 			get("WARPED_STAIRS"),
-			get("BLOCKUS_IRON_PLATING_STAIRS"),
+			get("QUARTZ_STAIRS"),
 		};
 		for (Material stair : gotStairs) {
 			if (stair != null) {
@@ -189,7 +189,7 @@ public class LegacyUtil {
 				return 7;
 			} else if (material.startsWith("WARPED")) {
 				return 8;
-			} else if (material.startsWith("BLOCKUS_IRON_PLATING")) {
+			} else if (material.startsWith("QUARTZ")) {
 				return 9;
 			} else {
 				return 0;
