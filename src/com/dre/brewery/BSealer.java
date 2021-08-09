@@ -28,14 +28,14 @@ public class BSealer implements InventoryHolder {
 
 	private final Inventory inventory;
 	private final Player player;
-	private short[] slotTime = new short[9];
+	private short[] slotTime = new short[27];
 	private ItemStack[] contents = null;
 	private BukkitTask task;
 
 	public BSealer(Player player) {
 		this.player = player;
 		if (inventoryHolderWorking) {
-			Inventory inv = P.p.getServer().createInventory(this, InventoryType.DISPENSER, P.p.languageReader.get("Etc_SealingTable"));
+			Inventory inv = P.p.getServer().createInventory(this, InventoryType.CHEST, P.p.languageReader.get("Etc_SealingTable"));
 			// Inventory Holder (for DISPENSER, ...) is only passed in Paper, not in Spigot. Doing inventory.getHolder() will return null in spigot :/
 			if (inv.getHolder() == this) {
 				inventory = inv;
@@ -44,7 +44,7 @@ public class BSealer implements InventoryHolder {
 				inventoryHolderWorking = false;
 			}
 		}
-		inventory = P.p.getServer().createInventory(this, 9, P.p.languageReader.get("Etc_SealingTable"));
+		inventory = P.p.getServer().createInventory(this, 27, P.p.languageReader.get("Etc_SealingTable"));
 	}
 
 	@Override

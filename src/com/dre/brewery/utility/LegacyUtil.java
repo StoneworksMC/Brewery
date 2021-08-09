@@ -48,6 +48,12 @@ public class LegacyUtil {
 				planks.add(m);
 			}
 		}
+		planks.add(get("QUARTZ_BLOCK"));
+		planks.add(get("GILDED_BLACKSTONE"));
+		planks.add(get("PRISMARINE"));
+		planks.add(get("CRYING_OBSIDIAN"));
+		planks.add(get("RED_NETHER_BRICKS"));
+		planks.add(get("BRICKS"));
 		PLANKS = planks;
 
 		Set<Material> woodStairs = EnumSet.noneOf(Material.class);
@@ -60,6 +66,14 @@ public class LegacyUtil {
 			get("DARK_OAK_STAIRS"),
 			get("CRIMSON_STAIRS"),
 			get("WARPED_STAIRS"),
+			get("QUARTZ_STAIRS"),
+			get("BLACKSTONE_STAIRS"),
+			get("PRISMARINE_BRICK_STAIRS"),
+			get("POLISHED_BLACKSTONE_STAIRS"),
+			get("RED_NETHER_BRICK_STAIRS"),
+			get("BRICK_STAIRS")
+		
+		
 		};
 		for (Material stair : gotStairs) {
 			if (stair != null) {
@@ -72,6 +86,9 @@ public class LegacyUtil {
 		Set<Material> fences = EnumSet.noneOf(Material.class);
 		for (Material m : Material.values()) {
 			if (m.name().endsWith("FENCE")) {
+				fences.add(m);
+			}
+			if (m.name().endsWith("WALL")) {
 				fences.add(m);
 			}
 		}
@@ -170,6 +187,8 @@ public class LegacyUtil {
 
 		if (P.use1_13 || isWoodStairs(wood.getType())) {
 			String material = wood.getType().name();
+			//Uncomment line below to see barrel types in console when they are made. Helps with Debugging barrels that arent working
+			P.p.errorLog(material); 
 			if (material.startsWith("OAK")) {
 				return 2;
 			} else if (material.startsWith("SPRUCE")) {
@@ -186,6 +205,24 @@ public class LegacyUtil {
 				return 7;
 			} else if (material.startsWith("WARPED")) {
 				return 8;
+			} else if (material.startsWith("QUARTZ")) {
+				return 9;
+			} else if (material.startsWith("GILDED")) {
+				return 10;
+			} else if (material.startsWith("BLACKSTONE_STAIRS")) {
+				return 10;
+			} else if (material.startsWith("PRISMARINE")) {
+				return 11;
+			} else if (material.startsWith("PRISMARINE_BRICK_STAIRS")) {
+				return 11;
+			} else if (material.startsWith("CRYING")) {
+				return 12;
+			} else if (material.startsWith("POLISHED_BLACKSTONE_STAIRS")) {
+				return 12;
+			} else if (material.startsWith("RED_NETHER")) {
+				return 13;
+			} else if (material.startsWith("BRICK")) {
+				return 14;
 			} else {
 				return 0;
 			}

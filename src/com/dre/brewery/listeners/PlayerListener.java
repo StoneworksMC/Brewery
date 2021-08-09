@@ -35,7 +35,7 @@ public class PlayerListener implements Listener {
 		Material type = clickedBlock.getType();
 
 		// -- Clicking an Hopper --
-		if (type == Material.HOPPER) {
+		if (type == Material.COMPOSTER) {
 			if (BConfig.brewHopperDump && event.getPlayer().isSneaking()) {
 				if (!P.use1_9 || event.getHand() == EquipmentSlot.HAND) {
 					ItemStack item = event.getItem();
