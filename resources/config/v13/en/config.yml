@@ -900,7 +900,7 @@ colorInBrewer: true
 # If a Large Barrel can be opened by clicking on any of its blocks, not just Spigot or Sign. This is always true for Small Barrels. [true]
 openLargeBarrelEverywhere: true
 
-# Allow emptying brews into hoppers to discard brews while keeping the glass bottle [true]
+# Allow emptying brews into composters to discard brews while keeping the glass bottle [true]
 brewHopperDump: true
 
 # -- Age Obfuscation --
