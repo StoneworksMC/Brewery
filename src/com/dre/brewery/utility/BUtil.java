@@ -1,11 +1,10 @@
 package com.dre.brewery.utility;
-
 import com.dre.brewery.BCauldron;
 import com.dre.brewery.Barrel;
 import com.dre.brewery.P;
 import com.dre.brewery.api.events.barrel.BarrelDestroyEvent;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -29,6 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class BUtil {
 
@@ -45,9 +47,19 @@ public class BUtil {
 		return block.getWorld().isChunkLoaded(block.getX() >> 4, block.getZ() >> 4);
 	}
 
+
+	public static final Pattern HEX_PATTERN = Pattern.compile("&#([A-Fa-f0-9]{6})");
 	public static String color(String msg) {
 		if (msg != null) {
-			msg = ChatColor.translateAlternateColorCodes('&', msg);
+			Matcher matcher = HEX_PATTERN.matcher(msg);
+			StringBuffer buffer = new StringBuffer();
+	
+			while(matcher.find()) {
+				matcher.appendReplacement(buffer, ChatColor.of("#" + matcher.group(1)).toString());
+			}
+	
+			return ChatColor.translateAlternateColorCodes('&', matcher.appendTail(buffer).toString());
+	
 		}
 		return msg;
 	}

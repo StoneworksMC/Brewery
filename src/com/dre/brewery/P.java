@@ -42,7 +42,7 @@ import org.apache.commons.lang.math.NumberUtils;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.*;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
@@ -55,6 +55,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.function.Function;
+
+
 
 public class P extends JavaPlugin {
 	public static P p;

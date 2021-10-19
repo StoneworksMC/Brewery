@@ -49,9 +49,9 @@ public class Barrel implements InventoryHolder {
 	public Barrel(Block spigot, byte signoffset) {
 		this.spigot = spigot;
 		if (isLarge()) {
-			inventory = P.p.getServer().createInventory(this, 27, P.p.languageReader.get("Etc_Barrel"));
+			inventory = P.p.getServer().createInventory(this, 54, P.p.languageReader.get("Etc_Barrel"));
 		} else {
-			inventory = P.p.getServer().createInventory(this, 9, P.p.languageReader.get("Etc_Barrel"));
+			inventory = P.p.getServer().createInventory(this, 18, P.p.languageReader.get("Etc_Barrel"));
 		}
 		body = new BarrelBody(this, signoffset);
 	}
@@ -71,9 +71,9 @@ public class Barrel implements InventoryHolder {
 	public Barrel(Block spigot, byte sign, BoundingBox bounds, Map<String, Object> items, float time, boolean async) {
 		this.spigot = spigot;
 		if (isLarge()) {
-			this.inventory = P.p.getServer().createInventory(this, 27, P.p.languageReader.get("Etc_Barrel"));
+			this.inventory = P.p.getServer().createInventory(this, 54, P.p.languageReader.get("Etc_Barrel"));
 		} else {
-			this.inventory = P.p.getServer().createInventory(this, 9, P.p.languageReader.get("Etc_Barrel"));
+			this.inventory = P.p.getServer().createInventory(this, 18, P.p.languageReader.get("Etc_Barrel"));
 		}
 		if (items != null) {
 			for (String slot : items.keySet()) {

@@ -188,7 +188,7 @@ public class LegacyUtil {
 		if (P.use1_13 || isWoodStairs(wood.getType())) {
 			String material = wood.getType().name();
 			//Uncomment line below to see barrel types in console when they are made. Helps with Debugging barrels that arent working
-			P.p.errorLog(material); 
+			//P.p.errorLog(material); 
 			if (material.startsWith("OAK")) {
 				return 2;
 			} else if (material.startsWith("SPRUCE")) {
