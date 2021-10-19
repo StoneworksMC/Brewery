@@ -512,6 +512,12 @@ openLargeBarrelEverywhere: true
 # Ob das Entleeren von Brewery Tränken mit Hilfe von Trichtern möglich ist, um die Glasflasche zurück zu bekommen [true]
 brewHopperDump: true
 
+# -- Age Obfuscation --
+
+ageObfuscation:
+  0: ''
+  100: 'Jahrhundert'
+  200: 'Hunderte Jahre'
 
 # -- Chat Veränderungs Einstellungen --
 

@@ -902,6 +902,12 @@ openLargeBarrelEverywhere: true
 # Allow emptying brews into hoppers to discard brews while keeping the glass bottle [true]
 brewHopperDump: true
 
+# -- Age Obfuscation --
+
+ageObfuscation:
+  0: ''
+  100: 'Secolo'
+  200: 'Centinaia di anni'
 
 # -- Imostazioni di distorsione della chat --
 
