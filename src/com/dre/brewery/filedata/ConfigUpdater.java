@@ -260,6 +260,15 @@ public class ConfigUpdater {
 			updateVersion(BConfig.configVersion);
 			fromVersion = "3.1";
 		}
+		if (fromVersion.equals("3.1")) {
+			if (de) {
+				update32de();
+			} else {
+				update32en();
+			}
+			updateVersion(BConfig.configVersion);
+			fromVersion = "3.2";
+		}
 
 		if (P.use1_13 && oldMat) {
 			updateMaterials(true);
@@ -2014,7 +2023,7 @@ public class ConfigUpdater {
 	private void update31en() {
 		addLinesAt(new String[]{"minimalParticles:", "loadDataAsync:", "openLargeBarrelEverywhere:", "colorInBrewer:"}, 1,
 			"",
-			"# Allow emptying brews into hoppers to discard brews while keeping the glass bottle [true]",
+			"# Allow emptying brews into composters to discard brews while keeping the glass bottle [true]",
 			"brewHopperDump: true");
 	}
 
@@ -2024,6 +2033,34 @@ public class ConfigUpdater {
 			"# Ob das Entleeren von Brewery Tränken mit Hilfe von Trichtern möglich ist, um die Glasflasche zurück zu bekommen [true]",
 			"brewHopperDump: true");
 	}
+
+	private void update32en() {
+		addLinesAt(new String[]{"minimalParticles:", "loadDataAsync:", "openLargeBarrelEverywhere:", "colorInBrewer:"}, 1,
+			"",
+			"# -- Age Obfuscation --",
+			"",
+			"# Define ranges for age that become obfuscated instead of explicitly saying the exact age",
+			"# Blank obfuscation reveals the exact age",
+			"ageObfuscation:",
+			" 0: ''",
+			" 100: 'Century'",
+			" 200: 'Hundreds of Years'");
+	}
+
+	private void update32de() {
+		addLinesAt(new String[]{"minimalParticles:", "loadDataAsync:", "openLargeBarrelEverywhere:", "colorInBrewer:"}, 1,
+			"",
+			"# -- Altersverschleierung --",
+			"",
+			"# Definiere Altersbereiche, die verschleiert werden, anstatt das genaue Alter explizit anzugeben",
+			"# Leere Verschleierung verrät das genaue Alter",
+			"ageObfuscation:",
+			" 0: ''",
+			" 100: 'Jahrhundert'",
+			" 200: 'Hunderte Jahre'");
+	}
+
+
 
 
 

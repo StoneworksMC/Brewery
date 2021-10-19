@@ -89,7 +89,7 @@ autosave: 3
 debug: false
 
 # Config Version
-version: '3.1'
+version: '3.2'
 oldMat: true
 
 
