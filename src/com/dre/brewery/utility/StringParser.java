@@ -7,7 +7,10 @@ public class StringParser {
 	public static Tuple<Integer, String> parseQuality(String line, ParseType type) {
 		line = P.p.color(line);
 		int plus = 0;
-		if (line.startsWith("+++")) {
+		if (line.startsWith("++++")) {
+			plus = 4;
+			line = line.substring(4);
+		} else if (line.startsWith("+++")) {
 			plus = 3;
 			line = line.substring(3);
 		} else if (line.startsWith("++")) {

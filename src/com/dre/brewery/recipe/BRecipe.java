@@ -622,8 +622,10 @@ public class BRecipe {
 			plus = 1;
 		} else if (quality <= 7) {
 			plus = 2;
-		} else {
+		} else if (quality <= 9) {
 			plus = 3;
+		} else {
+			plus = 4;
 		}
 		List<String> list = new ArrayList<>(source.size());
 		for (Tuple<Integer, String> line : source) {
