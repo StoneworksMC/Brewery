@@ -134,11 +134,6 @@
             <url>https://repo.codemc.org/repository/maven-public</url>
         </repository>
 		<repository>
-			<!-- MythicLib (MMOItems) -->
-			<id>MMOPlugins</id>
-			<url>https://mvn.lumine.io/repository/maven-releases/</url>
-		</repository>
-		<repository>
 			<!-- Shopkeepers -->
 			<id>Lichtspiele</id>
 			<url>https://nexus.lichtspiele.org/repository/releases/</url>
@@ -278,13 +273,6 @@
 			<version>1.0</version>
 			<scope>provided</scope>
 		</dependency>-->
-		<dependency>
-			<!-- https://mythiccraft.io/index.php?pages/official-mythiclib-dev/ -->
-			<groupId>io.lumine</groupId>
-			<artifactId>MythicLib</artifactId>
-			<version>1.0.19</version>
-			<scope>provided</scope>
-		</dependency>
 		<dependency>
 			<!-- https://github.com/ChestShop-authors/ChestShop-3/releases -->
 			<groupId>com.acrobot.chestshop</groupId>

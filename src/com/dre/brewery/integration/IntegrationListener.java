@@ -11,11 +11,9 @@ import com.dre.brewery.integration.barrel.GriefPreventionBarrel;
 import com.dre.brewery.integration.barrel.LWCBarrel;
 import com.dre.brewery.integration.barrel.LogBlockBarrel;
 import com.dre.brewery.integration.barrel.TownyBarrel;
-import com.dre.brewery.integration.item.MMOItemsPluginItem;
 import com.dre.brewery.recipe.BCauldronRecipe;
 import com.dre.brewery.recipe.RecipeItem;
 import com.dre.brewery.utility.LegacyUtil;
-import io.lumine.mythic.lib.api.item.NBTItem;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -313,37 +311,4 @@ public class IntegrationListener implements Listener {
 		}
 	}
 
-	@EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
-	public void onInteract(PlayerInteractEvent event) {
-		// Catch the Interact Event early, so MMOItems does not act before us and cancel the event while we try to add it to the Cauldron
-		if (!P.use1_9) return;
-		if (BConfig.hasMMOItems == null) {
-			BConfig.hasMMOItems = P.p.getServer().getPluginManager().isPluginEnabled("MMOItems")
-				&& P.p.getServer().getPluginManager().isPluginEnabled("MythicLib");
-		}
-		if (!BConfig.hasMMOItems) return;
-		try {
-			if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.hasItem() && event.getHand() == EquipmentSlot.HAND) {
-				if (event.getClickedBlock() != null && LegacyUtil.isWaterCauldron(event.getClickedBlock().getType())) {
-					NBTItem item = NBTItem.get(event.getItem());
-					if (item.hasType()) {
-						for (RecipeItem rItem : BCauldronRecipe.acceptedCustom) {
-							if (rItem instanceof MMOItemsPluginItem) {
-								MMOItemsPluginItem mmo = ((MMOItemsPluginItem) rItem);
-								if (mmo.matches(event.getItem())) {
-									event.setCancelled(true);
-									P.p.playerListener.onPlayerInteract(event);
-									return;
-								}
-							}
-						}
-					}
-				}
-			}
-		} catch (Throwable e) {
-			P.p.errorLog("Could not check MMOItems for Item");
-			e.printStackTrace();
-			BConfig.hasMMOItems = false;
-		}
-	}
 }
