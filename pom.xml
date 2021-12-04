@@ -4,7 +4,7 @@
 
 	<groupId>com.dre</groupId>
 	<artifactId>Brewery</artifactId>
-	<version>3.2</version>
+	<version>3.3</version>
 	<name>Brewery</name>
 
 	<properties>
@@ -144,7 +144,7 @@
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
-			<version>1.17-R0.1-SNAPSHOT</version>
+			<version>1.18-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 			<exclusions>
 				<exclusion>
