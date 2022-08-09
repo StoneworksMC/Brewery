@@ -2,9 +2,9 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.dre</groupId>
+	<groupId>com.github.StoneworksMC</groupId>
 	<artifactId>Brewery</artifactId>
-	<version>3.3</version>
+	<version>3.3.5</version>
 	<name>Brewery</name>
 
 	<properties>
