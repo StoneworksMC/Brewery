@@ -33,4 +33,9 @@ public class SlimefunPluginItem extends PluginItem {
 		}
 		return false;
 	}
+	
+	@Override
+	public String displayName() {
+		return SlimefunItem.getById(getItemId()).getItemName();
+	}
 }

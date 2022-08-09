@@ -1,6 +1,5 @@
 package com.dre.brewery.utility;
 
-import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.permissions.Permissible;
 import org.bukkit.permissions.PermissionAttachmentInfo;
@@ -122,16 +121,18 @@ public class PermissionUtil {
 			filter(x -> x.getPermission().startsWith(subPermission)).
 			findFirst();
 
-		if (found.isPresent()) {
-			String permission = found.get().getPermission();
-			int lastDot = permission.lastIndexOf('.');
-			int value = NumberUtils.toInt(permission.substring(lastDot + 1), -1);
-			if (value >= 0) {
-				return value;
+			if (found.isPresent()) {
+				String permission = found.get().getPermission();
+				int lastDot = permission.lastIndexOf('.');
+				try {
+					int value = Integer.parseInt(permission.substring(lastDot + 1));
+					if (value >= 0) {
+						return value;
+					}
+				} catch (NumberFormatException ignored) {}
 			}
+			return -1;
 		}
-		return -1;
-	}
 
 
 	/**

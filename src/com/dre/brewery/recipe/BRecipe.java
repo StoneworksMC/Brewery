@@ -7,7 +7,6 @@ import com.dre.brewery.filedata.BConfig;
 import com.dre.brewery.utility.BUtil;
 import com.dre.brewery.utility.StringParser;
 import com.dre.brewery.utility.Tuple;
-import org.apache.commons.lang.NotImplementedException;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -494,6 +493,16 @@ public class BRecipe {
 		}
 		return 0;
 	}
+	
+	@Nullable
+	public RecipeItem recipeItemFor(Ingredient ing) {
+		for (RecipeItem rItem : ingredients) {
+			if (rItem.matches(ing)) {
+				return rItem;
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * how many of a specific ingredient in the recipe
@@ -719,7 +728,7 @@ public class BRecipe {
 	}
 
 	public void setSaveInData(boolean saveInData) {
-		throw new NotImplementedException();
+		throw new UnsupportedOperationException();
 		//this.saveInData = saveInData;
 	}
 
