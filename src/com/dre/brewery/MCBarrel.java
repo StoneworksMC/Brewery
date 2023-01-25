@@ -129,6 +129,7 @@ public class MCBarrel {
 			// There are enough brews allowed to fill the inventory, we don't need to keep track
 			return;
 		}
+
 		boolean adding = false;
 		switch (event.getAction()) {
 			case PLACE_ALL:
