@@ -340,7 +340,6 @@ public class BIngredients {
 	}
 
 	/**
-	 * @see getErrorsForRecipe
 	 * @return A random list of errors from a close random recipe
 	 */
 	public List<BUserError> getErrors(float wood, float time, boolean distilled) {
@@ -361,7 +360,6 @@ public class BIngredients {
 	}
 
 	/**
-	 * @see getErrors
 	 * @return A random error from a close random recipe
 	 */
 	public BUserError getError(float wood, float time, boolean distilled) {

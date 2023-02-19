@@ -111,7 +111,7 @@ public class BEffect {
 	public void apply(int quality, Player player) {
 		PotionEffect effect = generateEffect(quality);
 		if (effect != null) {
-			BUtil.reapplyPotionEffect(player, effect, true);
+			BUtil.reapplyPotionEffect(player, effect);
 		}
 	}
 

@@ -17,6 +17,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -24,12 +25,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.UUID;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 
 public class BUtil {
@@ -53,13 +52,13 @@ public class BUtil {
 		if (msg != null) {
 			Matcher matcher = HEX_PATTERN.matcher(msg);
 			StringBuffer buffer = new StringBuffer();
-	
+
 			while(matcher.find()) {
 				matcher.appendReplacement(buffer, ChatColor.of("#" + matcher.group(1)).toString());
 			}
-	
+
 			return ChatColor.translateAlternateColorCodes('&', matcher.appendTail(buffer).toString());
-	
+
 		}
 		return msg;
 	}
@@ -139,26 +138,48 @@ public class BUtil {
 	}
 
 	/**
-	 * Apply a Potion Effect, if player already has this effect, overwrite the existing effect.
-	 *
-	 * @param onlyIfStronger Optionally only overwrite if the new one is stronger, i.e. has higher level or longer duration
+	 * Apply a Potion Effect.
 	 */
-	public static void reapplyPotionEffect(Player player, PotionEffect effect, boolean onlyIfStronger) {
+	public static void reapplyPotionEffect(Player player, PotionEffect effect) {
 		final PotionEffectType type = effect.getType();
-		if (player.hasPotionEffect(type)) {
-			PotionEffect plEffect;
-			if (P.use1_11) {
-				plEffect = player.getPotionEffect(type);
-			} else {
-				plEffect = player.getActivePotionEffects().stream().filter(e -> e.getType().equals(type)).findAny().get();
-			}
-			if (!onlyIfStronger ||
-				plEffect.getAmplifier() < effect.getAmplifier() ||
-				(plEffect.getAmplifier() == effect.getAmplifier() && plEffect.getDuration() < effect.getDuration())) {
-				player.removePotionEffect(type);
-			} else {
-				return;
-			}
+		if (!player.hasPotionEffect(type)) {
+			effect.apply(player);
+			return;
+		}
+		PotionEffect plEffect = player.getActivePotionEffects().stream().filter(e -> e.getType().equals(type))
+			.min(Comparator.comparing(e -> 256 - e.getAmplifier())).get();
+		if (plEffect.getAmplifier() > effect.getAmplifier() && effect.getDuration() > plEffect.getDuration()) {
+			PotionEffect newEffect = effect.getType().createEffect(effect.getDuration() - plEffect.getDuration(), effect.getAmplifier());
+			new BukkitRunnable() {
+				@Override
+				public void run() {
+					applyEffectLoop(player, newEffect);
+				}
+			}.runTaskLater(P.p, plEffect.getDuration());
+			return;
+		}
+		effect.apply(player);
+	}
+
+	public static void applyEffectLoop(Player player, PotionEffect effect) {
+		if (!player.isOnline())
+			return;
+		if (!player.hasPotionEffect(effect.getType())) {
+			effect.apply(player);
+			return;
+		}
+
+		PotionEffect plEffect = player.getActivePotionEffects().stream().filter(e -> e.getType().equals(effect.getType()))
+			.min(Comparator.comparing(e -> 256 - e.getAmplifier())).get();
+		if (plEffect.getAmplifier() > effect.getAmplifier() && effect.getDuration() > plEffect.getDuration()) {
+			PotionEffect newEffect = effect.getType().createEffect(effect.getDuration() - plEffect.getDuration(), effect.getAmplifier());
+			new BukkitRunnable() {
+				@Override
+				public void run() {
+					applyEffectLoop(player, newEffect);
+				}
+			}.runTaskLater(P.p, plEffect.getDuration());
+			return;
 		}
 		effect.apply(player);
 	}

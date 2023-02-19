@@ -570,7 +570,7 @@ public class BPlayer {
 		if (event.isCancelled() || event.getCount() < 1) {
 			return;
 		}
-		BUtil.reapplyPotionEffect(player, PotionEffectType.HUNGER.createEffect(80, 4), true);
+		BUtil.reapplyPotionEffect(player, PotionEffectType.HUNGER.createEffect(80, 4));
 
 		if (pTasks.isEmpty()) {
 			taskId = P.p.getServer().getScheduler().scheduleSyncRepeatingTask(P.p, BPlayer::pukeTask, 1L, 1L);
@@ -647,7 +647,7 @@ public class BPlayer {
 			return;
 		}
 		for (PotionEffect effect : effects) {
-			BUtil.reapplyPotionEffect(player, effect, true);
+			BUtil.reapplyPotionEffect(player, effect);
 		}
 	}
 
@@ -722,7 +722,7 @@ public class BPlayer {
 			return;
 		}
 		for (PotionEffect effect : list) {
-			BUtil.reapplyPotionEffect(player, effect, true);
+			BUtil.reapplyPotionEffect(player, effect);
 		}
 	}
 
@@ -766,7 +766,7 @@ public class BPlayer {
 			return;
 		}
 		for (PotionEffect effect : list) {
-			BUtil.reapplyPotionEffect(player, effect, true);
+			BUtil.reapplyPotionEffect(player, effect);
 		}
 	}
 

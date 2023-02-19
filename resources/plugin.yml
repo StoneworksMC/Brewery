@@ -21,6 +21,7 @@ permissions:
       brewery.cauldron.time: true
       brewery.cauldron.insert: true
       brewery.cauldron.fill: true
+      brewery.cmd.identify: true
 # Mod
   brewery.mod:
     description: Allow to maintain Wakeup Points and to login even if overdrunken
@@ -89,6 +90,8 @@ permissions:
     description: Make Brews Static
   brewery.cmd.reload:
     description: Reload config
+  brewery.cmd.identify:
+    description: Identify brews
 
 # -- Barrel --
   brewery.createbarrel:

@@ -149,6 +149,15 @@ public class CommandListener implements CommandExecutor {
 
 			cmdDrink(sender, args);
 
+		} else if(cmd.equalsIgnoreCase("identify")) {
+
+			if (sender.hasPermission("brewery.cmd.identify")) {
+				cmdIdentify(sender, args);
+			}
+			else {
+				p.msg(sender, p.languageReader.get("Error_NoPermissions"));
+			}
+
 		} else {
 
 			if (p.getServer().getPlayerExact(cmd) != null || BPlayer.hasPlayerbyName(cmd)) {
@@ -794,4 +803,17 @@ public class CommandListener implements CommandExecutor {
 		}
 	}
 
+	public void cmdIdentify(CommandSender sender, String[] args) {
+		if (!(sender instanceof Player)) {
+			p.msg(sender, p.languageReader.get("Error_PlayerCommand"));
+			return;
+		}
+		Player player = (Player) sender;
+		Brew brew = Brew.get(player.getInventory().getItemInMainHand().getItemMeta());
+		if (brew == null || brew.getDisplayName() == null) {
+			p.msg(sender, "§cNot holding a Brew or could not identify Brew.");
+			return;
+		}
+		p.msg(sender, "Brew Name: " + brew.getDisplayName());
+	}
 }

@@ -639,10 +639,10 @@ public class Brew implements Cloneable {
 			recipe.getColor().colorBrew(potionMeta, slotItem, canDistill());
 
 		} else {
-			BUserError error = ingredients.getError(wood, ageTime, distillRuns > 0);
+			//BUserError error = ingredients.getError(wood, ageTime, distillRuns > 0);
 			quality = 0;
 			lore.removeEffects();
-			lore.addOrReplaceLore(Type.ERROR, "", error.userMessage());
+			//lore.addOrReplaceLore(Type.ERROR, "", error.userMessage());
 			potionMeta.setDisplayName(P.p.color("&f" + P.p.languageReader.get("Brew_DistillUndefined")));
 			PotionColor.GREY.colorBrew(potionMeta, slotItem, canDistill());
 		}
@@ -713,11 +713,11 @@ public class Brew implements Cloneable {
 				potionMeta.setDisplayName(P.p.color("&f" + recipe.getName(quality)));
 				recipe.getColor().colorBrew(potionMeta, item, canDistill());
 			} else {
-				BUserError error = ingredients.getError(wood, ageTime, distillRuns > 0);
+				//BUserError error = ingredients.getError(wood, ageTime, distillRuns > 0);
 				quality = 0;
 				lore.convertLore(false);
 				lore.removeEffects();
-				lore.addOrReplaceLore(Type.ERROR, "", error.userMessage());
+				//lore.addOrReplaceLore(Type.ERROR, "", error.userMessage());
 				currentRecipe = null;
 				potionMeta.setDisplayName(P.p.color("&f" + P.p.languageReader.get("Brew_BadPotion")));
 				PotionColor.GREY.colorBrew(potionMeta, item, canDistill());
@@ -1004,6 +1004,14 @@ public class Brew implements Cloneable {
 		}
 		save(meta);
 		item.setItemMeta(meta);
+	}
+
+	@Nullable
+	public String getDisplayName() {
+		if (hasRecipe()) {
+			return currentRecipe.getName(quality);
+		}
+		else return null;
 	}
 
 	public void saveToStream(DataOutputStream out) throws IOException {

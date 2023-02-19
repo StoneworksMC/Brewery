@@ -16,8 +16,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.EquipmentSlot;
@@ -29,14 +29,17 @@ public class PlayerListener implements Listener {
 
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent event) {
-		final Player player = (Player) event.getWhoClicked();
-
-		if(event.getInventory().getType() != InventoryType.BARREL) return;
+		if(!event.getView().getTopInventory().getType().equals(InventoryType.CHEST)) return;
 		if(!event.getView().getTitle().equals(P.p.languageReader.get("Etc_Barrel"))) return;
+		if(event.getWhoClicked().isOp()) return;
+		if(event.getClick().isKeyboardClick()) {
+			event.setCancelled(true);
+			return;
+		}
 		if(event.getCurrentItem() == null) return;
-		if(event.getCurrentItem().getType() == Material.POTION && event.getCurrentItem().getDurability() == 0) return;
-
-		if(event.getCurrentItem().getType() != Material.GLASS_BOTTLE || event.getCurrentItem().getType() != Material.POTION) event.setCancelled(true);
+		if(event.getCurrentItem().getType() != Material.POTION && event.getCurrentItem().getType() != Material.GLASS_BOTTLE) {
+			event.setCancelled(true);
+		}
 	}
 
 	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)

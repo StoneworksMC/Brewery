@@ -157,7 +157,9 @@ public class PermissionUtil {
 
 		STATIC("brewery.cmd.static"),
 		COPY("brewery.cmd.copy"),
-		DELETE("brewery.cmd.delete");
+		DELETE("brewery.cmd.delete"),
+		IDENTIFY("brewery.cmd.identify");
+
 
 		public String permission;
 
