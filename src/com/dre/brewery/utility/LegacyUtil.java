@@ -54,6 +54,11 @@ public class LegacyUtil {
 		planks.add(get("CRYING_OBSIDIAN"));
 		planks.add(get("RED_NETHER_BRICKS"));
 		planks.add(get("BRICKS"));
+		planks.add(get("WAXED_COPPER_BLOCK"));
+		planks.add(get("AMETHYST_BLOCK"));
+		planks.add(get("RED_MUSHROOM_BLOCK"));
+		planks.add(get("HONEYCOMB_BLOCK"));
+		planks.add(get("SCULK"));
 		PLANKS = planks;
 
 		Set<Material> woodStairs = EnumSet.noneOf(Material.class);
@@ -71,8 +76,13 @@ public class LegacyUtil {
 			get("PRISMARINE_BRICK_STAIRS"),
 			get("POLISHED_BLACKSTONE_STAIRS"),
 			get("RED_NETHER_BRICK_STAIRS"),
-			get("BRICK_STAIRS")
-		
+			get("BRICK_STAIRS"),
+			get("WAXED_CUT_COPPER_STAIRS"),
+			get("POLISHED_DEEPSLATE_STAIRS"),
+			get("SMOOTH_QUARTZ_STAIRS"),
+			get("POLISHED_BLACKSTONE_BRICK_STAIRS"),
+			get("DEEPSLATE_TILE_STAIRS"),
+			get("MANGROVE_STAIRS")
 		
 		};
 		for (Material stair : gotStairs) {
@@ -223,9 +233,33 @@ public class LegacyUtil {
 				return 13;
 			} else if (material.startsWith("BRICK")) {
 				return 14;
+			} else if (material.startsWith("WAXED_COPPER_BLOCK")) {
+				return 15;
+			} else if (material.startsWith("WAXED_CUT_COPPER_STAIRS")) {
+				return 15;
+			} else if (material.startsWith("AMETHYST_BLOCK")) {
+				return 16;
+			} else if (material.startsWith("POLISHED_DEEPSLATE_STAIRS")) {
+				return 16;
+			} else if (material.startsWith("RED_MUSHROOM_BLOCK")) {
+				return 17;
+			} else if (material.startsWith("SMOOTH_QUARTZ_STAIRS")) {
+				return 17;
+			} else if (material.startsWith("HONEYCOMB_BLOCK")) {
+				return 18;
+			} else if (material.startsWith("POLISHED_BLACKSTONE_BRICK_STAIRS")) {
+				return 18;
+			} else if (material.startsWith("SCULK")) {
+				return 19;
+			} else if (material.startsWith("DEEPSLATE_TILE_STAIRS")) {
+				return 19;
+			} else if (material.startsWith("MANGROVE_PLANKS")) {
+				return 20;
+			} else if (material.startsWith("MANGROVE_STAIRS")) {
+				return 20;
 			} else {
 				return 0;
-			}
+			} 
 
 		} else {
 			@SuppressWarnings("deprecation")
