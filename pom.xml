@@ -4,7 +4,7 @@
 
 	<groupId>com.github.StoneworksMC</groupId>
 	<artifactId>Brewery</artifactId>
-	<version>3.3.6</version>
+	<version>3.4.0</version>
 	<name>Brewery</name>
 
 	<properties>
@@ -55,6 +55,7 @@
 							<goal>shade</goal>
 						</goals>
 						<configuration>
+							<finalName>${project.artifactId}-${project.version}-tremons</finalName>
 							<artifactSet>
 								<includes>
 									<include>org.bstats:*</include>
@@ -78,6 +79,9 @@
 				<executions>
 					<execution>
 						<?m2e ignore?>
+						<configuration>
+							<finalName>${project.artifactId}-${project.version}-tremons</finalName>
+						</configuration>
 						<phase>compile</phase>
 						<goals>
 							<goal>jar</goal>
