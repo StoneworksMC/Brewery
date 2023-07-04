@@ -198,7 +198,7 @@ public class InventoryListener implements Listener {
 		if (!(event.getInventory().getHolder(false) instanceof BSealer)) {
 			return;
 		}
-		((BSealer) event.getInventory().getHolder(true)).clickInv();
+		((BSealer) event.getInventory().getHolder(false)).clickInv();
 	}
 
 	//public static boolean opening = false;
@@ -299,7 +299,7 @@ public class InventoryListener implements Listener {
 	@EventHandler
 	public void onInventoryClose(InventoryCloseEvent event) {
 		if (!P.use1_13) return;
-		if (event.getInventory().getHolder() instanceof BSealer) {
+		if (event.getInventory().getHolder(false) instanceof BSealer) {
 			((BSealer) event.getInventory().getHolder(false)).closeInv();
 		}
 
