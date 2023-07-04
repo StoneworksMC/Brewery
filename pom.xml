@@ -4,7 +4,7 @@
 
 	<groupId>com.github.StoneworksMC</groupId>
 	<artifactId>Brewery</artifactId>
-	<version>3.3.5</version>
+	<version>3.4.0</version>
 	<name>Brewery</name>
 
 	<properties>
@@ -103,8 +103,8 @@
 			<url>https://repo.md-5.net/content/groups/public/</url>
 		</repository>
 		<repository>
-			<id>spigot-repo</id>
-			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+			<id>papermc-repo</id>
+			<url>https://repo.papermc.io/repository/maven-public/</url>
 		</repository>
 		<repository>
 			<id>vault-repo</id>
@@ -147,20 +147,10 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.spigotmc</groupId>
-			<artifactId>spigot-api</artifactId>
-			<version>1.19-R0.1-SNAPSHOT</version>
+			<groupId>io.papermc.paper</groupId>
+			<artifactId>paper-api</artifactId>
+			<version>1.18.2-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>guava</artifactId>
-					<groupId>com.google.guava</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>snakeyaml</artifactId>
-					<groupId>org.yaml</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<!-- https://bstats.org/getting-started/include-metrics -->
@@ -310,7 +300,7 @@
 			<!-- https://www.jetbrains.com/help/idea/annotating-source-code.html -->
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>
-			<version>16.0.2</version>
+			<version>24.0.1</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
