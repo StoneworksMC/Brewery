@@ -138,7 +138,7 @@ public class InventoryListener implements Listener {
 			if (event.getSlot() > 2) {
 				return;
 			}
-		} else if (!(event.getInventory().getHolder() instanceof Barrel) && !(P.use1_14 && event.getInventory().getHolder() instanceof org.bukkit.block.Barrel)) {
+		} else if (!(event.getInventory().getHolder(false) instanceof Barrel) && !(P.use1_14 && event.getInventory().getHolder(false) instanceof org.bukkit.block.Barrel)) {
 			return;
 		}
 
@@ -195,11 +195,10 @@ public class InventoryListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void onInventoryClickBSealer(InventoryClickEvent event) {
 		if (!P.use1_13) return;
-		InventoryHolder holder = event.getInventory().getHolder();
-		if (!(holder instanceof BSealer)) {
+		if (!(event.getInventory().getHolder(false) instanceof BSealer)) {
 			return;
 		}
-		((BSealer) holder).clickInv();
+		((BSealer) event.getInventory().getHolder(false)).clickInv();
 	}
 
 	//public static boolean opening = false;
@@ -300,15 +299,15 @@ public class InventoryListener implements Listener {
 	@EventHandler
 	public void onInventoryClose(InventoryCloseEvent event) {
 		if (!P.use1_13) return;
-		if (event.getInventory().getHolder() instanceof BSealer) {
-			((BSealer) event.getInventory().getHolder()).closeInv();
+		if (event.getInventory().getHolder(false) instanceof BSealer) {
+			((BSealer) event.getInventory().getHolder(false)).closeInv();
 		}
 
 		if (!P.use1_14) return;
 
 		// Barrel Closing Sound
-		if (event.getInventory().getHolder() instanceof Barrel) {
-			Barrel barrel = ((Barrel) event.getInventory().getHolder());
+		if (event.getInventory().getHolder(false) instanceof Barrel) {
+			Barrel barrel = ((Barrel) event.getInventory().getHolder(false));
 			barrel.playClosingSound();
 		}
 
