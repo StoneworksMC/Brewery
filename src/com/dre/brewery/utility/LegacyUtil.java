@@ -51,14 +51,15 @@ public class LegacyUtil {
 		planks.add(get("QUARTZ_BLOCK"));
 		planks.add(get("GILDED_BLACKSTONE"));
 		planks.add(get("PRISMARINE"));
-		planks.add(get("CRYING_OBSIDIAN"));
-		planks.add(get("RED_NETHER_BRICKS"));
-		planks.add(get("BRICKS"));
-		planks.add(get("WAXED_COPPER_BLOCK"));
-		planks.add(get("AMETHYST_BLOCK"));
+		planks.add(get("BROWN_MUSHROOM_BLOCK"));
 		planks.add(get("RED_MUSHROOM_BLOCK"));
-		planks.add(get("HONEYCOMB_BLOCK"));
-		planks.add(get("SCULK"));
+		planks.add(get("MAGMA_BLOCK"));
+		planks.add(get("SAND"));
+		planks.add(get("RED_SAND"));
+		planks.add(get("MELON"));
+		planks.add(get("TUBE_CORAL_BLOCK"));
+		planks.add(get("HORN_CORAL_BLOCK"));
+		planks.add(get("BUBBLE_CORAL_BLOCK"));
 		PLANKS = planks;
 
 		Set<Material> woodStairs = EnumSet.noneOf(Material.class);
@@ -74,14 +75,16 @@ public class LegacyUtil {
 			get("QUARTZ_STAIRS"),
 			get("BLACKSTONE_STAIRS"),
 			get("PRISMARINE_BRICK_STAIRS"),
-			get("POLISHED_BLACKSTONE_STAIRS"),
-			get("RED_NETHER_BRICK_STAIRS"),
-			get("BRICK_STAIRS"),
-			get("WAXED_CUT_COPPER_STAIRS"),
-			get("POLISHED_DEEPSLATE_STAIRS"),
 			get("SMOOTH_QUARTZ_STAIRS"),
-			get("POLISHED_BLACKSTONE_BRICK_STAIRS"),
-			get("DEEPSLATE_TILE_STAIRS"),
+			get("RED_NETHER_BRICK_STAIRS"),
+			get("WAXED_EXPOSED_CUT_COPPER_STAIRS"),
+			get("PURPUR_STAIRS"),
+			get("SANDSTONE_STAIRS"),
+			get("SMOOTH_SANDSTONE_STAIRS"),
+			get("SMOOTH_RED_SANDSTONE_STAIRS"),
+			get("DARK_PRISMARINE_STAIRS"),
+			get("POLISHED_GRANITE_STAIRS"),
+			get("CHERRY_STAIRS"),
 			get("MANGROVE_STAIRS")
 		
 		};
@@ -225,38 +228,46 @@ public class LegacyUtil {
 				return 11;
 			} else if (material.startsWith("PRISMARINE_BRICK_STAIRS")) {
 				return 11;
-			} else if (material.startsWith("CRYING")) {
+			} else if (material.startsWith("SAND")) {
 				return 12;
-			} else if (material.startsWith("POLISHED_BLACKSTONE_STAIRS")) {
+			} else if (material.startsWith("SMOOTH_SANDSTONE_STAIRS")) {
 				return 12;
-			} else if (material.startsWith("RED_NETHER")) {
+			} else if (material.startsWith("MAGMA_BLOCK")) {
 				return 13;
-			} else if (material.startsWith("BRICK")) {
+			} else if (material.startsWith("RED_NETHER_BRICK_STAIRS")) {
+				return 13;
+			} else if (material.startsWith("BROWN_MUSHROOM_BLOCK")) {
 				return 14;
-			} else if (material.startsWith("WAXED_COPPER_BLOCK")) {
-				return 15;
-			} else if (material.startsWith("WAXED_CUT_COPPER_STAIRS")) {
-				return 15;
-			} else if (material.startsWith("AMETHYST_BLOCK")) {
-				return 16;
-			} else if (material.startsWith("POLISHED_DEEPSLATE_STAIRS")) {
-				return 16;
+			} else if (material.startsWith("WAXED_EXPOSED_CUT_COPPER_STAIRS")) {
+				return 14;
 			} else if (material.startsWith("RED_MUSHROOM_BLOCK")) {
-				return 17;
+				return 15;
 			} else if (material.startsWith("SMOOTH_QUARTZ_STAIRS")) {
+				return 15;
+			} else if (material.startsWith("MELON")) {
+				return 16;
+			} else if (material.startsWith("POLISHED_GRANITE_STAIRS")) {
+				return 16;
+			} else if (material.startsWith("TUBE_CORAL_BLOCK")) {
 				return 17;
-			} else if (material.startsWith("HONEYCOMB_BLOCK")) {
+			} else if (material.startsWith("DARK_PRISMARINE_STAIRS")) {
+				return 17;
+			} else if (material.startsWith("HORN_CORAL_BLOCK")) {
 				return 18;
-			} else if (material.startsWith("POLISHED_BLACKSTONE_BRICK_STAIRS")) {
+			} else if (material.startsWith("SANDSTONE_STAIRS")) {
 				return 18;
-			} else if (material.startsWith("SCULK")) {
+			} else if (material.startsWith("BUBBLE_CORAL_BLOCK")) {
 				return 19;
-			} else if (material.startsWith("DEEPSLATE_TILE_STAIRS")) {
+			} else if (material.startsWith("PURPUR_STAIRS")) {
 				return 19;
-			} else if (material.startsWith("MANGROVE_PLANKS")) {
+			} else if (material.startsWith("RED_SAND")) {
 				return 20;
-			} else if (material.startsWith("MANGROVE_STAIRS")) {
+			} else if (material.startsWith("SMOOTH_RED_SANDSTONE_STAIRS")) {
 				return 20;
+			} else if (material.startsWith("MANGROVE")) {
+				return 21;
+			} else if (material.startsWith("CHERRY")) {
+				return 22;
 			} else {
 				return 0;
 			} 
