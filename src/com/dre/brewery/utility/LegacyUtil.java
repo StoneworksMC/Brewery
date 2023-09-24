@@ -54,6 +54,9 @@ public class LegacyUtil {
 		planks.add(get("CRYING_OBSIDIAN"));
 		planks.add(get("RED_NETHER_BRICKS"));
 		planks.add(get("BRICKS"));
+		planks.add(get("WAXED_COPPER_BLOCK"));
+		planks.add(get("SCULK"));
+		planks.add(get("RED_MUSHROOM_BLOCK"));		
 		PLANKS = planks;
 
 		Set<Material> woodStairs = EnumSet.noneOf(Material.class);
@@ -71,9 +74,15 @@ public class LegacyUtil {
 			get("PRISMARINE_BRICK_STAIRS"),
 			get("POLISHED_BLACKSTONE_STAIRS"),
 			get("RED_NETHER_BRICK_STAIRS"),
-			get("BRICK_STAIRS")
-		
-		
+			get("BRICK_STAIRS"),
+			get("CHERRY_STAIRS"),
+			get("MANGROVE_STAIRS"),
+			get("BAMBOO_STAIRS"),		
+			get("SMOOTH_QUARTZ_STAIRS"),	
+			get("DEEPSLATE_TILE_STAIRS"),
+			get("WAXED_CUT_COPPER_STAIRS")
+
+			
 		};
 		for (Material stair : gotStairs) {
 			if (stair != null) {
@@ -223,6 +232,24 @@ public class LegacyUtil {
 				return 13;
 			} else if (material.startsWith("BRICK")) {
 				return 14;
+			} else if (material.startsWith("WAXED_COPPER_BLOCK")) {
+				return 15;
+			} else if (material.startsWith("WAXED_CUT_COPPER_STAIRS")) {
+				return 15;
+			} else if (material.startsWith("SCULK")) {
+				return 16;
+			} else if (material.startsWith("DEEPSLATE_TILE_STAIRS")) {
+				return 16;
+			} else if (material.startsWith("RED_MUSHROOM_BLOCK")) {
+				return 17;
+			} else if (material.startsWith("SMOOTH_QUARTZ_STAIRS")) {
+				return 17;
+			} else if (material.startsWith("MANGROVE")) {
+				return 18;
+			} else if (material.startsWith("CHERRY")) {
+				return 19;
+			} else if (material.startsWith("BAMBOO")) {
+				return 20;
 			} else {
 				return 0;
 			}
