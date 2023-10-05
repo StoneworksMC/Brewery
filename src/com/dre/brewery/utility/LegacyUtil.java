@@ -49,17 +49,16 @@ public class LegacyUtil {
 			}
 		}
 		planks.add(get("QUARTZ_BLOCK"));
-		planks.add(get("GILDED_BLACKSTONE"));
+		planks.add(get("MAGMA_BLOCK"));
 		planks.add(get("PRISMARINE"));
 		planks.add(get("BROWN_MUSHROOM_BLOCK"));
-		planks.add(get("RED_MUSHROOM_BLOCK"));
-		planks.add(get("MAGMA_BLOCK"));
-		planks.add(get("SAND"));
-		planks.add(get("RED_SAND"));
-		planks.add(get("MELON"));
-		planks.add(get("TUBE_CORAL_BLOCK"));
 		planks.add(get("HORN_CORAL_BLOCK"));
+		planks.add(get("SAND"));
+		planks.add(get("TUBE_CORAL_BLOCK"));
+		planks.add(get("MELON"));
+		planks.add(get("RED_SAND"));		
 		planks.add(get("BUBBLE_CORAL_BLOCK"));
+		planks.add(get("RED_MUSHROOM_BLOCK"));					
 		PLANKS = planks;
 
 		Set<Material> woodStairs = EnumSet.noneOf(Material.class);
@@ -75,18 +74,19 @@ public class LegacyUtil {
 			get("QUARTZ_STAIRS"),
 			get("BLACKSTONE_STAIRS"),
 			get("PRISMARINE_BRICK_STAIRS"),
-			get("SMOOTH_QUARTZ_STAIRS"),
 			get("RED_NETHER_BRICK_STAIRS"),
-			get("WAXED_EXPOSED_CUT_COPPER_STAIRS"),
-			get("PURPUR_STAIRS"),
-			get("SANDSTONE_STAIRS"),
-			get("SMOOTH_SANDSTONE_STAIRS"),
-			get("SMOOTH_RED_SANDSTONE_STAIRS"),
-			get("DARK_PRISMARINE_STAIRS"),
-			get("POLISHED_GRANITE_STAIRS"),
 			get("CHERRY_STAIRS"),
-			get("MANGROVE_STAIRS")
-		
+			get("MANGROVE_STAIRS"),
+			get("BAMBOO_STAIRS"),		
+			get("SMOOTH_QUARTZ_STAIRS"),	
+			get("WAXED_EXPOSED_CUT_COPPER_STAIRS"),
+			get("DARK_PRISMARINE_STAIRS"),
+			get("SANDSTONE_STAIRS"),
+			get("PURPUR_STAIRS"),
+			get("SMOOTH_RED_SANDSTONE_STAIRS"),
+			get("POLISHED_GRANITE_STAIRS")
+
+			
 		};
 		for (Material stair : gotStairs) {
 			if (stair != null) {
@@ -268,9 +268,11 @@ public class LegacyUtil {
 				return 21;
 			} else if (material.startsWith("CHERRY")) {
 				return 22;
+			} else if (material.startsWith("BAMBOO")) {
+				return 23;
 			} else {
 				return 0;
-			} 
+			}
 
 		} else {
 			@SuppressWarnings("deprecation")
