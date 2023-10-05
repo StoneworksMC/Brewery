@@ -84,6 +84,7 @@ public class LegacyUtil {
 			get("SANDSTONE_STAIRS"),
 			get("PURPUR_STAIRS"),
 			get("SMOOTH_RED_SANDSTONE_STAIRS"),
+			get("SMOOTH_SANDSTONE_STAIRS"),
 			get("POLISHED_GRANITE_STAIRS")
 
 			
