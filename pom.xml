@@ -4,7 +4,7 @@
 
 	<groupId>com.github.StoneworksMC</groupId>
 	<artifactId>Brewery</artifactId>
-	<version>3.4.1</version>
+	<version>3.4.2</version>
 	<name>Brewery</name>
 
 	<properties>
@@ -302,6 +302,13 @@
 			<artifactId>annotations</artifactId>
 			<version>24.0.1</version>
 			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<!-- Lands API for access permission -->
+			<groupId>com.github.angeschossen</groupId>
+			<artifactId>LandsAPI</artifactId>
+			<version>6.37.0</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>

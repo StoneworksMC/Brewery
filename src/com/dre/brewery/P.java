@@ -38,6 +38,7 @@ import com.dre.brewery.listeners.*;
 import com.dre.brewery.recipe.*;
 import com.dre.brewery.utility.BUtil;
 import com.dre.brewery.utility.LegacyUtil;
+import me.angeschossen.lands.api.LandsIntegration;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.*;
 import org.bukkit.Bukkit;
@@ -49,6 +50,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import javax.annotation.Nullable;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -86,6 +88,9 @@ public class P extends JavaPlugin {
 	public int brewsCreated;
 	public int brewsCreatedCmd; // Created by command
 	public int exc, good, norm, bad, terr; // Brews drunken with quality
+
+	// APIs
+	public @Nullable LandsIntegration landsAPI;
 
 	@Override
 	public void onEnable() {
@@ -126,6 +131,11 @@ public class P extends JavaPlugin {
 			getServer().getPluginManager().disablePlugin(this);
 			return;
 		}
+
+		// Register APIs
+		if (getServer().getPluginManager().isPluginEnabled("Lands")) {
+			landsAPI = LandsIntegration.of(this);
+		} else landsAPI = null;
 
 		// Register Item Loaders
 		CustomItem.registerItemLoader(this);

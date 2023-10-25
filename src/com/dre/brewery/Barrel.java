@@ -10,6 +10,7 @@ import com.dre.brewery.lore.BrewLore;
 import com.dre.brewery.utility.BUtil;
 import com.dre.brewery.utility.BoundingBox;
 import com.dre.brewery.utility.LegacyUtil;
+import me.angeschossen.lands.api.land.Area;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -119,6 +120,15 @@ public class Barrel implements InventoryHolder {
 			}
 		} else {
 			if (!player.hasPermission("brewery.openbarrel.small")) {
+				P.p.msg(player, P.p.languageReader.get("Error_NoBarrelAccess"));
+				return false;
+			}
+		}
+
+		if (P.p.landsAPI != null) {
+			Location loc = event.getClickedBlock().getLocation();
+			Area area = P.p.landsAPI.getArea(loc);
+			if (area != null && !area.isTrusted(player.getUniqueId())) {
 				P.p.msg(player, P.p.languageReader.get("Error_NoBarrelAccess"));
 				return false;
 			}
