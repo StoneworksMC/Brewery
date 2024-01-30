@@ -37,6 +37,7 @@ import com.dre.brewery.integration.barrel.LogBlockBarrel;
 import com.dre.brewery.listeners.*;
 import com.dre.brewery.recipe.*;
 import com.dre.brewery.utility.BUtil;
+import com.dre.brewery.utility.ColorUtil;
 import com.dre.brewery.utility.LegacyUtil;
 import me.angeschossen.lands.api.LandsIntegration;
 import org.bstats.bukkit.Metrics;
@@ -551,7 +552,7 @@ public class P extends JavaPlugin {
 	}
 
 	public String color(String msg) {
-		return BUtil.color(msg);
+		return ColorUtil.color(msg);
 	}
 
 

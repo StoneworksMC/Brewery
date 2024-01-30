@@ -5,6 +5,7 @@ import com.dre.brewery.filedata.BConfig;
 import com.dre.brewery.recipe.BCauldronRecipe;
 import com.dre.brewery.recipe.RecipeItem;
 import com.dre.brewery.utility.BUtil;
+import com.dre.brewery.utility.ColorUtil;
 import com.dre.brewery.utility.LegacyUtil;
 import com.dre.brewery.utility.Tuple;
 import org.bukkit.*;
@@ -336,7 +337,7 @@ public class BCauldron {
 				prevColor = Color.fromRGB(153, 221, 255); // Bright Blue
 			}
 
-			particleColor = BUtil.weightedMixColor(prevColor, prevPos, state, colorList.get(index).b(), minute);
+			particleColor = ColorUtil.weightedMixColor(prevColor, prevPos, state, colorList.get(index).b(), minute);
 		} else if (minute == state) {
 			// reached the minute
 			particleColor = colorList.get(index).b();
@@ -354,7 +355,7 @@ public class BCauldron {
 					// We are past the next color (Gray) as well, keep using it
 					particleColor = nextColor;
 				} else {
-					particleColor = BUtil.weightedMixColor(colorList.get(index).b(), minute, state, nextColor, nextPos);
+					particleColor = ColorUtil.weightedMixColor(colorList.get(index).b(), minute, state, nextColor, nextPos);
 				}
 			}
 		}

@@ -45,52 +45,6 @@ public class BUtil {
 		return block.getWorld().isChunkLoaded(block.getX() >> 4, block.getZ() >> 4);
 	}
 
-
-	public static final Pattern HEX_PATTERN = Pattern.compile("&#([A-Fa-f0-9]{6})");
-	public static String color(String msg) {
-		if (msg != null) {
-			Matcher matcher = HEX_PATTERN.matcher(msg);
-			StringBuffer buffer = new StringBuffer();
-
-			while(matcher.find()) {
-				matcher.appendReplacement(buffer, ChatColor.of("#" + matcher.group(1)).toString());
-			}
-
-			return ChatColor.translateAlternateColorCodes('&', matcher.appendTail(buffer).toString());
-
-		}
-		return msg;
-	}
-
-	/**
-	 * Creates a weighted mix between the two given colours
-	 * <p>where the weight is calculated from the distance of the currentPos to the prev and next
-	 *
-	 * @param prevColor Previous Color
-	 * @param prevPos Position of the Previous Color
-	 * @param currentPos Current Position
-	 * @param nextColor Next Color
-	 * @param nextPos Position of the Next Color
-	 * @return Mixed Color
-	 */
-	public static Color weightedMixColor(Color prevColor, int prevPos, int currentPos, Color nextColor, int nextPos) {
-		float diffPrev = currentPos - prevPos;
-		float diffNext = nextPos - currentPos;
-		float total = diffNext + diffPrev;
-		float percentNext = diffPrev / total;
-		float percentPrev = diffNext / total;
-
-			/*5 #8# 15
-			8-5 = 3 -> 3/10
-			15-8 = 7 -> 7/10*/
-
-		return Color.fromRGB(
-			Math.min(255, (int) ((nextColor.getRed() * percentNext) + (prevColor.getRed() * percentPrev))),
-			Math.min(255, (int) ((nextColor.getGreen() * percentNext) + (prevColor.getGreen() * percentPrev))),
-			Math.min(255, (int) ((nextColor.getBlue() * percentNext) + (prevColor.getBlue() * percentPrev)))
-		);
-	}
-
 	/**
 	 * Sets the Item in the Players hand, depending on which hand he used and if the hand should be swapped
 	 *
@@ -358,13 +312,13 @@ public class BUtil {
 			page = 1;
 		}
 
-		sender.sendMessage(color("&7-------------- &f" + P.p.languageReader.get("Etc_Page") + " &6" + page + "&f/&6" + pages + " &7--------------"));
+		sender.sendMessage(ColorUtil.color("&7-------------- &f" + P.p.languageReader.get("Etc_Page") + " &6" + page + "&f/&6" + pages + " &7--------------"));
 
 		ListIterator<String> iter = strings.listIterator((page - 1) * 7);
 
 		for (int i = 0; i < 7; i++) {
 			if (iter.hasNext()) {
-				sender.sendMessage(color(iter.next()));
+				sender.sendMessage(ColorUtil.color(iter.next()));
 			} else {
 				break;
 			}
