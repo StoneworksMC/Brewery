@@ -118,16 +118,44 @@ public class P extends JavaPlugin {
 		}
 
 		// load the Config
+
+		// Old Way (Not Shard Sync)
+//		try {
+//			FileConfiguration cfg = BConfig.loadConfigFile();
+//			if (cfg == null) {
+//				p = null;
+//				getServer().getPluginManager().disablePlugin(this);
+//				return;
+//			}
+//			BConfig.readConfig(cfg);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			p = null;
+//			getServer().getPluginManager().disablePlugin(this);
+//			return;
+//		}
+
+		// New Way
 		try {
-			FileConfiguration cfg = BConfig.loadConfigFile();
-			if (cfg == null) {
+			FileConfiguration requestConfig = ShardConfigSync.loadApiConfigFile();
+			if(requestConfig == null) {
+				getLogger().severe("COULD NOT GET SYNCHRONIZATION API DETAILS. Failed to start plugin. Contact development immediately (A|Alf)");
 				p = null;
 				getServer().getPluginManager().disablePlugin(this);
 				return;
 			}
-			BConfig.readConfig(cfg);
-		} catch (Exception e) {
-			e.printStackTrace();
+			FileConfiguration config = ShardConfigSync.loadConfigFromServer(requestConfig);
+			if(config == null) {
+				getLogger().severe("COULD NOT FETCH CONFIG FROM API. Failed to start plugin. Contact development immediately (B|Alf)");
+				p = null;
+				getServer().getPluginManager().disablePlugin(this);
+				return;
+			}
+
+			BConfig.readConfig(config);
+		}catch(Exception ex) {
+			getLogger().severe("COULD NOT FETCH CONFIG FROM API. Failed to start plugin. Contact development immediately (C|Alf)");
+			ex.printStackTrace();
 			p = null;
 			getServer().getPluginManager().disablePlugin(this);
 			return;
